@@ -90,4 +90,7 @@ class BaseCollector(ABC):
         pass
 
     def __del__(self):
-        self.browser.close()
+        try:
+            self.browser.close()
+        except Exception:
+            pass
