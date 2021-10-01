@@ -7,7 +7,6 @@ import aiofiles
 import aiohttp
 
 from google_img.collectors.base import BaseCollector
-from google_img.downloader import base64_to_object, get_extension_from_link
 
 from .collectors.registry import collector
 
