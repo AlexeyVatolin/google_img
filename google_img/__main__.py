@@ -37,6 +37,7 @@ def main(
     output_folder: Path = typer.Argument(
         ..., help="Output images folder", resolve_path=True, dir_okay=True
     ),
+    hidden: bool = typer.Option(True, help="Does not show browser window"),
     print_version: bool = typer.Option(
         None,
         "-v",
@@ -46,8 +47,12 @@ def main(
         help="Prints the version of the google_img package.",
     ),
 ) -> None:
-    typer.echo(output_folder)
-    download_async(keywords, collector_name.value)
+    download_async(
+        keywords=keywords,
+        collector_name=collector_name.value,
+        output_folder=output_folder,
+        hidden=hidden,
+    )
 
 
 if __name__ == "__main__":

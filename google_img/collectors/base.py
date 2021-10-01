@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 import time
 from abc import ABC, abstractmethod
@@ -12,13 +12,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class BaseCollector(ABC):
-    def __init__(self, no_gui=False, proxy=None):
+    def __init__(self, hidden: bool = True, proxy: Optional[str] = None):
         chromedriver_path: str = chromedriver_autoinstaller.install()
 
         chrome_options = Options()
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
-        if no_gui:
+        if hidden:
             chrome_options.add_argument("--headless")
         if proxy:
             chrome_options.add_argument(f"--proxy-server={proxy}")
