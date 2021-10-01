@@ -1,0 +1,13 @@
+# This file contains values from Cookiecutter
+
+default_context:
+  project_name: "google_img"
+  project_description: "Awesome `google_img` is a Python cli/package created with https://github.com/TezRomacH/python-package-template"
+  organization: "google_img"
+  license: "MIT"
+  minimal_python_version: 3.7
+  github_name: "google_img"
+  email: "vatolinalex@gmail.com"
+  version: "0.1.0"
+  line_length: "99"
+  create_example_template: "cli"
