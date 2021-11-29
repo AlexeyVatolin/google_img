@@ -41,7 +41,7 @@ rich = "^10.7.0"
 selenium = "^3.141.0"
 chromedriver-autoinstaller = "^0.2.2"
 aiohttp = "^3.7.4"
-aiofiles = "^0.7.0"
+aiofiles = "^0.8.0"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.0"
