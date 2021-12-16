@@ -164,11 +164,11 @@ unicode_backport = ["unicodedata2"]
 
 [[package]]
 name = "chromedriver-autoinstaller"
-version = "0.2.2"
+version = "0.3.1"
 description = "Automatically install chromedriver that supports the currently installed version of chrome."
 category = "main"
 optional = false
-python-versions = ">=3"
+python-versions = ">=3.6"
 
 [[package]]
 name = "click"
@@ -809,7 +809,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "1d7e690f5ca94f961e4a9bab30931875e9d225c3197063cd3784954fd8d558da"
+content-hash = "1497f2c5bdba0b9b9f259899a9f6eafea1e6838d21ac1210fb84cb5d7ea3465f"
 
 [metadata.files]
 aiofiles = [
@@ -900,8 +900,8 @@ charset-normalizer = [
     {file = "charset_normalizer-2.0.6-py3-none-any.whl", hash = "sha256:5d209c0a931f215cee683b6445e2d77677e7e75e159f78def0db09d68fafcaa6"},
 ]
 chromedriver-autoinstaller = [
-    {file = "chromedriver-autoinstaller-0.2.2.tar.gz", hash = "sha256:b17108315c375e29f6efd4324dde4c8be7074b87baffccb583c2018c096a6f74"},
-    {file = "chromedriver_autoinstaller-0.2.2-py3-none-any.whl", hash = "sha256:c5ba6074b08aac8d669d4761fcab11408189ee64074e1f1c94b70dca5c29a988"},
+    {file = "chromedriver-autoinstaller-0.3.1.tar.gz", hash = "sha256:7bafc2c1730fc044d078a9e2e31c59c8015077c7e4de3903f7f14693af03bfbe"},
+    {file = "chromedriver_autoinstaller-0.3.1-py3-none-any.whl", hash = "sha256:d2d934fed5a8c27352e279c8c398ecbc570f5aebb4a877add05dc4703ce91bc8"},
 ]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
