@@ -57,7 +57,7 @@ pytest = "^6.2.4"
 pyupgrade = "^2.24.0"
 safety = "^1.10.3"
 types-aiofiles = "^0.1.9"
-viztracer = "^0.14.0"
+viztracer = "^0.15.1"
 
 [tool.black]
 # https://github.com/psf/black
