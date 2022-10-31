@@ -35,6 +35,7 @@ python-versions = "~=3.6"
 
 [package.dependencies]
 lazy-object-proxy = ">=1.4.0"
+setuptools = ">=20.0"
 typed-ast = {version = ">=1.4.0,<1.5", markers = "implementation_name == \"cpython\" and python_version < \"3.8\""}
 typing-extensions = {version = ">=3.10", markers = "python_version < \"3.10\""}
 wrapt = ">=1.11,<1.13"
@@ -64,10 +65,10 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.extras]
-dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope.interface", "furo", "sphinx", "sphinx-notfound-page", "pre-commit"]
-docs = ["furo", "sphinx", "zope.interface", "sphinx-notfound-page"]
-tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope.interface"]
-tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins"]
+dev = ["coverage[toml] (>=5.0.2)", "furo", "hypothesis", "mypy", "pre-commit", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six", "sphinx", "sphinx-notfound-page", "zope.interface"]
+docs = ["furo", "sphinx", "sphinx-notfound-page", "zope.interface"]
+tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "mypy", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six", "zope.interface"]
+tests-no-zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "mypy", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six"]
 
 [[package]]
 name = "backports.entry-points-selectable"
@@ -81,8 +82,8 @@ python-versions = ">=2.7"
 importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
-testing = ["pytest (>=4.6)", "pytest-flake8", "pytest-cov", "pytest-black (>=0.3.7)", "pytest-mypy", "pytest-checkdocs (>=2.4)", "pytest-enabler (>=1.0.1)"]
+docs = ["jaraco.packaging (>=8.2)", "rst.linker (>=1.9)", "sphinx"]
+testing = ["pytest (>=4.6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.0.1)", "pytest-flake8", "pytest-mypy"]
 
 [[package]]
 name = "bandit"
@@ -117,7 +118,7 @@ tomli = ">=0.2.6,<2.0.0"
 typed-ast = {version = ">=1.4.2", markers = "python_version < \"3.8\""}
 typing-extensions = [
     {version = ">=3.10.0.0", markers = "python_version < \"3.10\""},
-    {version = "!=3.10.0.1", markers = "python_version >= \"3.10\""},
+    {version = ">=3.10.0.0,<3.10.0.1 || >3.10.0.1", markers = "python_version >= \"3.10\""},
 ]
 
 [package.extras]
@@ -160,7 +161,7 @@ optional = false
 python-versions = ">=3.5.0"
 
 [package.extras]
-unicode_backport = ["unicodedata2"]
+unicode-backport = ["unicodedata2"]
 
 [[package]]
 name = "chromedriver-autoinstaller"
@@ -296,9 +297,9 @@ typing-extensions = {version = ">=3.6.4", markers = "python_version < \"3.8\""}
 zipp = ">=0.5"
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
+docs = ["jaraco.packaging (>=8.2)", "rst.linker (>=1.9)", "sphinx"]
 perf = ["ipython"]
-testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "packaging", "pep517", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy", "importlib-resources (>=1.3)"]
+testing = ["flufl.flake8", "importlib-resources (>=1.3)", "packaging", "pep517", "pyfakefs", "pytest (>=4.6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.0.1)", "pytest-flake8", "pytest-mypy", "pytest-perf (>=0.9.2)"]
 
 [[package]]
 name = "iniconfig"
@@ -320,10 +321,10 @@ python-versions = ">=3.6.1,<4.0"
 colorama = {version = ">=0.4.3,<0.5.0", optional = true, markers = "extra == \"colors\""}
 
 [package.extras]
-pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
-requirements_deprecated_finder = ["pipreqs", "pip-api"]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
+pipfile-deprecated-finder = ["pipreqs", "requirementslib"]
 plugins = ["setuptools"]
+requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "lazy-object-proxy"
@@ -382,6 +383,14 @@ description = "Node.js virtual environment builder"
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "objprint"
+version = "0.2.2"
+description = "A library that can print Python objects in human readable format"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
 
 [[package]]
 name = "packaging"
@@ -574,7 +583,7 @@ urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
-use_chardet_on_py3 = ["chardet (>=3.0.2,<5)"]
+use-chardet-on-py3 = ["chardet (>=3.0.2,<5)"]
 
 [[package]]
 name = "rich"
@@ -606,6 +615,7 @@ Click = ">=6.0"
 dparse = ">=0.5.1"
 packaging = "*"
 requests = "*"
+setuptools = "*"
 
 [[package]]
 name = "selenium"
@@ -617,6 +627,19 @@ python-versions = "*"
 
 [package.dependencies]
 urllib3 = "*"
+
+[[package]]
+name = "setuptools"
+version = "65.5.0"
+description = "Easily download, build, install, upgrade, and uninstall Python packages"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo", "jaraco.packaging (>=9)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-hoverxref (<2)", "sphinx-inline-tabs", "sphinx-notfound-page (==0.8.3)", "sphinx-reredirects", "sphinxcontrib-towncrier"]
+testing = ["build[virtualenv]", "filelock (>=3.4.0)", "flake8 (<5)", "flake8-2020", "ini2toml[lite] (>=0.9)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "mock", "pip (>=19.1)", "pip-run (>=8.8)", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-flake8", "pytest-mypy (>=0.9.1)", "pytest-perf", "pytest-xdist", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
+testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "pytest", "pytest-enabler", "pytest-xdist", "tomli", "virtualenv (>=13.0.0)", "wheel"]
 
 [[package]]
 name = "shellingham"
@@ -710,8 +733,8 @@ shellingham = {version = ">=1.3.0,<2.0.0", optional = true, markers = "extra == 
 [package.extras]
 all = ["colorama (>=0.4.3,<0.5.0)", "shellingham (>=1.3.0,<2.0.0)"]
 dev = ["autoflake (>=1.3.1,<2.0.0)", "flake8 (>=3.8.3,<4.0.0)"]
-doc = ["mkdocs (>=1.1.2,<2.0.0)", "mkdocs-material (>=5.4.0,<6.0.0)", "markdown-include (>=0.5.1,<0.6.0)"]
-test = ["shellingham (>=1.3.0,<2.0.0)", "pytest (>=4.4.0,<5.4.0)", "pytest-cov (>=2.10.0,<3.0.0)", "coverage (>=5.2,<6.0)", "pytest-xdist (>=1.32.0,<2.0.0)", "pytest-sugar (>=0.9.4,<0.10.0)", "mypy (==0.910)", "black (>=19.10b0,<20.0b0)", "isort (>=5.0.6,<6.0.0)"]
+doc = ["markdown-include (>=0.5.1,<0.6.0)", "mkdocs (>=1.1.2,<2.0.0)", "mkdocs-material (>=5.4.0,<6.0.0)"]
+test = ["black (>=19.10b0,<20.0b0)", "coverage (>=5.2,<6.0)", "isort (>=5.0.6,<6.0.0)", "mypy (==0.910)", "pytest (>=4.4.0,<5.4.0)", "pytest-cov (>=2.10.0,<3.0.0)", "pytest-sugar (>=0.9.4,<0.10.0)", "pytest-xdist (>=1.32.0,<2.0.0)", "shellingham (>=1.3.0,<2.0.0)"]
 
 [[package]]
 name = "types-aiofiles"
@@ -739,7 +762,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
 
 [package.extras]
 brotli = ["brotlipy (>=0.6.0)"]
-secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
+secure = ["certifi", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "ipaddress", "pyOpenSSL (>=0.14)"]
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
@@ -760,18 +783,21 @@ six = ">=1.9.0,<2"
 
 [package.extras]
 docs = ["proselint (>=0.10.2)", "sphinx (>=3)", "sphinx-argparse (>=0.2.5)", "sphinx-rtd-theme (>=0.4.3)", "towncrier (>=19.9.0rc1)"]
-testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", "pytest (>=4)", "pytest-env (>=0.6.2)", "pytest-freezegun (>=0.4.1)", "pytest-mock (>=2)", "pytest-randomly (>=1)", "pytest-timeout (>=1)", "packaging (>=20.0)"]
+testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", "packaging (>=20.0)", "pytest (>=4)", "pytest-env (>=0.6.2)", "pytest-freezegun (>=0.4.1)", "pytest-mock (>=2)", "pytest-randomly (>=1)", "pytest-timeout (>=1)"]
 
 [[package]]
 name = "viztracer"
-version = "0.14.0"
+version = "0.15.5"
 description = "A debugging and profiling tool that can trace and visualize python code execution"
 category = "dev"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
+
+[package.dependencies]
+objprint = ">=0.1.3"
 
 [package.extras]
-full = ["rich", "orjson"]
+full = ["orjson", "rich"]
 
 [[package]]
 name = "wrapt"
@@ -803,13 +829,13 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
-testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
+docs = ["jaraco.packaging (>=8.2)", "rst.linker (>=1.9)", "sphinx"]
+testing = ["func-timeout", "jaraco.itertools", "pytest (>=4.6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.0.1)", "pytest-flake8", "pytest-mypy"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "1d7e690f5ca94f961e4a9bab30931875e9d225c3197063cd3784954fd8d558da"
+content-hash = "1a48b78a8b0a1da63487ecf48a3fb60f0f737732ad4f63f40097479550ed8e51"
 
 [metadata.files]
 aiofiles = [
@@ -1059,6 +1085,10 @@ nodeenv = [
     {file = "nodeenv-1.6.0-py2.py3-none-any.whl", hash = "sha256:621e6b7076565ddcacd2db0294c0381e01fd28945ab36bcf00f41c5daf63bef7"},
     {file = "nodeenv-1.6.0.tar.gz", hash = "sha256:3ef13ff90291ba2a4a7a4ff9a979b63ffdd00a464dbe04acf0ea6471517a4c2b"},
 ]
+objprint = [
+    {file = "objprint-0.2.2-py3-none-any.whl", hash = "sha256:9f50bb3b7cbe95b6d22c79e4f08a5273e3f7e5ff5ce35e146f6e7854abd276a0"},
+    {file = "objprint-0.2.2.tar.gz", hash = "sha256:90f2f3c19dfda1b5eb50d87d82ccbc20511ca4f02c4878553c56edc711e39689"},
+]
 packaging = [
     {file = "packaging-21.0-py3-none-any.whl", hash = "sha256:c86254f9220d55e31cc94d69bade760f0847da8000def4dfe1c6b872fd14ff14"},
     {file = "packaging-21.0.tar.gz", hash = "sha256:7dc96269f53a4ccec5c0670940a4281106dd0bb343f47b7471f779df49c2fbe7"},
@@ -1201,6 +1231,10 @@ selenium = [
     {file = "selenium-3.141.0-py2.py3-none-any.whl", hash = "sha256:2d7131d7bc5a5b99a2d9b04aaf2612c411b03b8ca1b1ee8d3de5845a9be2cb3c"},
     {file = "selenium-3.141.0.tar.gz", hash = "sha256:deaf32b60ad91a4611b98d8002757f29e6f2c2d5fcaf202e1c9ad06d6772300d"},
 ]
+setuptools = [
+    {file = "setuptools-65.5.0-py3-none-any.whl", hash = "sha256:f62ea9da9ed6289bfe868cd6845968a2c854d1427f8548d52cae02a42b4f0356"},
+    {file = "setuptools-65.5.0.tar.gz", hash = "sha256:512e5536220e38146176efb833d4a62aa726b7bbff82cfbc8ba9eaa3996e0b17"},
+]
 shellingham = [
     {file = "shellingham-1.4.0-py2.py3-none-any.whl", hash = "sha256:536b67a0697f2e4af32ab176c00a50ac2899c5a05e0d8e2dadac8e58888283f9"},
     {file = "shellingham-1.4.0.tar.gz", hash = "sha256:4855c2458d6904829bd34c299f11fdeed7cfefbf8a2c522e4caea6cd76b3171e"},
@@ -1287,23 +1321,43 @@ virtualenv = [
     {file = "virtualenv-20.8.1.tar.gz", hash = "sha256:bcc17f0b3a29670dd777d6f0755a4c04f28815395bca279cdcb213b97199a6b8"},
 ]
 viztracer = [
-    {file = "viztracer-0.14.0-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:7a54a6886043825586bfdc0a879758e44e5ab5fc8a743b23427dc162b7b4173e"},
-    {file = "viztracer-0.14.0-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:571fd540a92f346663403cadf763e4ccf62e51a1d6bf8680d2327a77866296f9"},
-    {file = "viztracer-0.14.0-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:c06a7e5f7b23d28b34164d8828f9fa6cde0820cde1cbf576a28efe20f10c3980"},
-    {file = "viztracer-0.14.0-cp36-cp36m-win_amd64.whl", hash = "sha256:ca6c926ab395748542695f0891f7c600aeaaf3a7b19f147bfa2f5be2e9766943"},
-    {file = "viztracer-0.14.0-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:73ba94ad3462e552a00a5b9e620d38fc6dcfba45a261f4987576fa49b77b0d0b"},
-    {file = "viztracer-0.14.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:30f349e91d21a52c0e9b37de9298d61dfe8f3b9fb429be912df69e491762334c"},
-    {file = "viztracer-0.14.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:3b114140fe9944972bd7d1a4dd38759774084592edb9435d1800e0a833a3b98e"},
-    {file = "viztracer-0.14.0-cp37-cp37m-win_amd64.whl", hash = "sha256:27e2b9071d30d5bb02e905c6e11e7488230d879e3c7061dca9194290fedcdf46"},
-    {file = "viztracer-0.14.0-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:44f3ef805f2e34400400c0d38a4759399a5e5a11f3ed513895e4db225247c731"},
-    {file = "viztracer-0.14.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3fd914d640938d6681e2412169f8240ac5f3955e94a6f77648bcdce1bc0d1c88"},
-    {file = "viztracer-0.14.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:1ec8db8c2dba3ffa4cc726b7307c73223dbdf5d02cc18f5e6dddad801e222dc9"},
-    {file = "viztracer-0.14.0-cp38-cp38-win_amd64.whl", hash = "sha256:fa3aa9da7cfc7fc69feda692cf0c9f31f9d2c94d2233df6abac9f322612895a4"},
-    {file = "viztracer-0.14.0-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:8fc60182191c74d8158069834d8a07b1353767898de501e10844b28e17962507"},
-    {file = "viztracer-0.14.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:07bc365c86ea7670692631196bf4becb5f905e6d48795e74a40afa83e3ea7c12"},
-    {file = "viztracer-0.14.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:34b371196bf144926587488ba5d3ce7613e72bcbd755975941f289e6185e68be"},
-    {file = "viztracer-0.14.0-cp39-cp39-win_amd64.whl", hash = "sha256:4f2bd83486ad0363c72cb5a9b38a8ee58389a0d1d032d6f5b08aa220bff5a8b2"},
-    {file = "viztracer-0.14.0.tar.gz", hash = "sha256:80a8968e179679e012fdc510b339dcc092074d2a1edd2f8b18db3c8a61dae531"},
+    {file = "viztracer-0.15.5-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:e7bee261edffeaab0610f5afb26461be0e17d0350b20d92be4d0b3302bc676cf"},
+    {file = "viztracer-0.15.5-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5650fd350d5761438a9b72b0fffa82f78df4f2e941d88ebcc19eb3873ccccdeb"},
+    {file = "viztracer-0.15.5-cp310-cp310-manylinux_2_17_i686.manylinux2014_i686.manylinux_2_24_i686.whl", hash = "sha256:51c1dc30899648848d2230901e0ad35cb33fe33d59ec01846d16a2e16868f00a"},
+    {file = "viztracer-0.15.5-cp310-cp310-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:9c86f12b5afa22c0f41a2a08fe4c55fcb97ba47091f9fedf4b66cfdac3cfcb6e"},
+    {file = "viztracer-0.15.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:881b3b3f5e1b3bbe117d4cc192101fec6f5c6eb3d3ce5d0079afe19591372782"},
+    {file = "viztracer-0.15.5-cp310-cp310-win32.whl", hash = "sha256:c1ab9e310b343c642ec788cdd5ef6f500913ee998b8c4f86bfd4c0faff22f1dd"},
+    {file = "viztracer-0.15.5-cp310-cp310-win_amd64.whl", hash = "sha256:692ec8da0b52e9a36738be2cb40e4cfcaf0fad15ed0ad1dc26814c660fd08365"},
+    {file = "viztracer-0.15.5-cp311-cp311-macosx_10_15_x86_64.whl", hash = "sha256:49273e83f008a531c68936a84ce67805c028cac8ff9f20801f3f6e404cee2f44"},
+    {file = "viztracer-0.15.5-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:05ed5d698480d3dfe39be7473b11c2ab4f0835fc9f5e5978b71df73cf18bfabc"},
+    {file = "viztracer-0.15.5-cp311-cp311-manylinux_2_17_i686.manylinux2014_i686.manylinux_2_24_i686.whl", hash = "sha256:b32af22d481d7c83ea37409fb8ffb824dd1eef143160cd04106a05ef4a69169f"},
+    {file = "viztracer-0.15.5-cp311-cp311-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:1d0f9afe204f68acbc8dc16bf3a0856d9c6d2c35dc5467c2531d80daeac8afb2"},
+    {file = "viztracer-0.15.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0482fa403ea84307891a3022e5ff33f1b8652e9c4f4319a8fa2eb8a65548147a"},
+    {file = "viztracer-0.15.5-cp311-cp311-win32.whl", hash = "sha256:023d87b7b014d68c60fae3ea923f649a1e2d993def0c8732ffe11d12b583018a"},
+    {file = "viztracer-0.15.5-cp311-cp311-win_amd64.whl", hash = "sha256:7ca1d060d97101cf4ba48f312186228fff45eca750df7f757e283b4dfc0188ee"},
+    {file = "viztracer-0.15.5-cp37-cp37m-macosx_10_15_x86_64.whl", hash = "sha256:877d0e09cd12638328e2875ea7bd9339c9898a2ea22cbc0300e0361d4e5a04ff"},
+    {file = "viztracer-0.15.5-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b4bcc0fdab8c260b54c0742cb90f103ca4ab64ef3a8f23df0d793585c8d145ed"},
+    {file = "viztracer-0.15.5-cp37-cp37m-manylinux_2_17_i686.manylinux2014_i686.manylinux_2_24_i686.whl", hash = "sha256:fca3ceb193f33d985a848aa4760c749097fa3be1f6e082c321608c5d68c93230"},
+    {file = "viztracer-0.15.5-cp37-cp37m-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:38a7f8906051f14c0cd49a3d22ba75f46db528bd7ec772571510e635197081e6"},
+    {file = "viztracer-0.15.5-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:800ec96c0a9f4690b4955acc6bdc7b588d126f69b148fa27e115512e08043df9"},
+    {file = "viztracer-0.15.5-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:cf9dee7ad54d0f4fc1eb9a4331265edee865fc0708a028b31fb54d18edbe4146"},
+    {file = "viztracer-0.15.5-cp37-cp37m-win32.whl", hash = "sha256:7e793d58ba7d427d8ffb07756d1207f2f66294a9ce14006f50a5b51f07ba53f6"},
+    {file = "viztracer-0.15.5-cp37-cp37m-win_amd64.whl", hash = "sha256:4bd1fda6eea25c68fbc0582b41a5412f0610c647dea95b6c74f13f176be32a89"},
+    {file = "viztracer-0.15.5-cp38-cp38-macosx_10_15_x86_64.whl", hash = "sha256:17ac1ff7a547bdd1f5655b3b6aa8d118a43c494b78bef9b43e8a7347db029db4"},
+    {file = "viztracer-0.15.5-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:468bfd63bd1619310ce3af626d8909a8f4262a298769241829c90f84351fd452"},
+    {file = "viztracer-0.15.5-cp38-cp38-manylinux_2_17_i686.manylinux2014_i686.manylinux_2_24_i686.whl", hash = "sha256:b2f32c6482746c7fd42b91db1b79d7f8ec5012642ace090215e3c59b71a2720c"},
+    {file = "viztracer-0.15.5-cp38-cp38-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:ee9546307e739c3e33bce0f5159932fff1e6f28fd8c3b6f594776c543ac1b3f3"},
+    {file = "viztracer-0.15.5-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:937e38f49e75450340f1534ca27bb2199c4a1ac76807f6d2b83b2d8768127dbc"},
+    {file = "viztracer-0.15.5-cp38-cp38-win32.whl", hash = "sha256:44209ce996fe39da928d09d60c305524f199b28c49c3241123443d2722c974b0"},
+    {file = "viztracer-0.15.5-cp38-cp38-win_amd64.whl", hash = "sha256:30de9c2229b4da3d6a609fa92cd03f20a225b2eb4cc886b334507789159914e8"},
+    {file = "viztracer-0.15.5-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:8164665e28b8b4356eb7119f0a146b9bff8719a0ed81c81753d5b2e2f9122944"},
+    {file = "viztracer-0.15.5-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:46f53e5f014d8345e622dc7b563bfa1dd4ed9b991ab985c76b0b1e3011b47417"},
+    {file = "viztracer-0.15.5-cp39-cp39-manylinux_2_17_i686.manylinux2014_i686.manylinux_2_24_i686.whl", hash = "sha256:d177fd31b5554d1b0130a226827e639770d6991a63680c1ae6c951cacef6c680"},
+    {file = "viztracer-0.15.5-cp39-cp39-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:c836eb2de3befcb579872b394407bf79fc784802afbddc365ad3812f5de35727"},
+    {file = "viztracer-0.15.5-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:eef7eb5d8a350a7a20ebbc2d039d3ccb445ccb16f2ebaf77464fb81dd0fd7e6a"},
+    {file = "viztracer-0.15.5-cp39-cp39-win32.whl", hash = "sha256:e7d610ba5340059d99e6c66b5726f87ff9f54b0e8c7604454fe10dfe536badef"},
+    {file = "viztracer-0.15.5-cp39-cp39-win_amd64.whl", hash = "sha256:71e781681d3a96780102b34220ccc25b0257ff78f3fcd0af57d16960d4da3061"},
+    {file = "viztracer-0.15.5.tar.gz", hash = "sha256:9df866365c34ec20facf05e69d1e50767cc909ed7c616b74080cc2c1715397e1"},
 ]
 wrapt = [
     {file = "wrapt-1.12.1.tar.gz", hash = "sha256:b62ffa81fb85f4332a4f609cab4ac40709470da05643a082ec1eb88e6d9b97d7"},
